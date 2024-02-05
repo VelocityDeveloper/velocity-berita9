@@ -1,7 +1,7 @@
-Velocity Child Theme
+Velocity Berita 9
 =================
 
-Child Theme for the Velocity System WordPress theme.
+Child Theme for the Velocity System WP Berita.
 
 ### Usage
 Simply download the zip and upload the zip (velocity-child-theme-master.zip) under your WordPress dashboard at Appearance > Themes. Or extract and upload via FTP at wp-content/themes/.
