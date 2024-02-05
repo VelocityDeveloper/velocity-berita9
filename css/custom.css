@@ -1,0 +1,228 @@
+:root {
+    --color-theme: #740106;
+    --bs-body-font-size: .85rem !important;
+    --bs-body-font-family: Arial, Helvetica, sans-serif !important;
+}
+:root[data-bs-theme=light] {
+    --bs-link-color: #333333 !important;
+    --bs-link-hover-color: var(--color-theme) !important;
+}
+:root[data-bs-theme=light] body {
+    color: var(--bs-dark);
+    background-color: var(--bs-secondary);
+}
+:root[data-bs-theme=light] .navbar-dark {
+    --bs-navbar-color: rgb(255 255 255);
+}
+:root[data-bs-theme=light] .container {
+    background-color: var(--bs-white);
+}
+small{
+    font-size: .7rem !important;
+}
+.container {
+    max-width: 940px !important;
+}
+.bg-header {
+    background: transparent !important;
+}
+.bg-color-theme {
+	background-color: var(--color-theme) !important;
+}
+.bg-gradients {
+    background: #f4f4f4;
+    background: -moz-linear-gradient(top,  #f4f4f4 0%, #dedede 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4f4f4), color-stop(100%,#dedede));
+    background: -webkit-linear-gradient(top,  #f4f4f4 0%,#dedede 100%);
+    background: -o-linear-gradient(top,  #f4f4f4 0%,#dedede 100%);
+    background: -ms-linear-gradient(top,  #f4f4f4 0%,#dedede 100%);
+    background: linear-gradient(to bottom,  #f4f4f4 0%,#dedede 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#dedede',GradientType=0 );
+    border-bottom: 1px solid #fff;
+    box-shadow: 0 1px 3px #aaa;
+    -moz-box-shadow: 0 1px 3px #aaa;
+    -webkit-box-shadow: 0 1px 3px #aaa;
+}
+.bg-muted {
+    background-color: #dcdcdc;
+}
+h1, h2, h3, h4, h5, h6,
+.widget_tabs_berita_9_widget {font-family: "Oswald", Georgia, serif;}
+.widget_tabs_berita_9_widget #beritaTabs {
+    border-bottom: 2px solid var(--color-theme);
+}
+.navbar-brand img {
+    max-height: 70px !important;
+}
+.secondary-menu li a {
+    font-size: .8rem;
+    border-right: 1px solid rgba(30, 30, 30, 0.125);
+}
+#wrapper-content > .wrapper {
+	padding: 0;
+}
+#wrapper-content > .wrapper > #content {
+    padding: 1rem;
+}
+.module-vdposts h6 {font-size: 14px;}
+.widget .module-vdposts {font-size: 13px;}
+.home-special-title span {
+    font-size: .9rem;
+    font-weight: bold;
+    padding: 10px;
+    text-transform: uppercase;
+}
+.bg-lightening {
+    background-color: #efefef;
+}
+.home-title {
+    background: var(--color-theme) url('../img/pattern-5.png') repeat left center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 0 #666666;
+    -moz-box-shadow: 0 2px 0 #666666;
+    -webkit-box-shadow: 0 2px 0 #666666;
+    border-top: none;
+    color: var(--bs-white);
+    padding: 0.5rem 0.75rem;
+    text-transform: uppercase;
+    font-size: .9rem;
+    font-weight: bold;
+}
+.velocity-navbar .navbar {
+    margin: 0 -13px;
+    background: url('../img/pattern-5.png') repeat left center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 0 #666666;
+    -moz-box-shadow: 0 2px 0 #666666;
+    -webkit-box-shadow: 0 2px 0 #666666;
+    border-top: none;
+}
+.home-special {
+    background: var(--color-theme) url('../img/pattern-5.png') repeat left center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 0 #666666;
+    -moz-box-shadow: 0 2px 0 #666666;
+    -webkit-box-shadow: 0 2px 0 #666666;
+    border-top: none;
+}
+.velocity-navbar .navbar::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid var(--color-theme);
+    border-left: 12px solid transparent;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+}
+.velocity-navbar .navbar::after {
+    content:'';
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid var(--color-theme);
+    border-right: 12px solid transparent;
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+}
+#wrapper-navbar {
+    padding: 0 !important;
+}
+.widget li {
+    list-style: none;
+    position: relative;
+    padding-left: 20px;
+}
+.widget ul{padding: 0 !important;}
+.widget li::after {
+    content: '\f0f6';
+    font-family: 'FontAwesome';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.widget .widget-title {
+    padding: 0.5rem 0;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.widget-title {
+    border-style: solid;
+    border-width: 3px 0 3px 0;
+    border-color: #222222;
+    color: #333333;
+    text-transform: uppercase;
+    line-height: 16px;
+
+}
+.widget_tabs_berita_9_widget li::after {
+    content: '';
+}
+.flickity-prev-next-button {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 0;
+}
+#beritaTabs .nav-item .nav-link.active {
+    background-color: var(--color-theme) !important;
+    border: 0 !important;
+    color: #ffffff;
+}
+#carouselHome .carousel-indicators [data-bs-target] {    
+    width: 0.65rem;
+    height: 0.65rem;
+}
+.container-home-first {
+    background: repeating-linear-gradient( 45deg, #33333321, #33333321 5px, #21212100 5px, #21212100 10px );
+}
+.carousel-post-item {
+    width: 100%;
+}
+#search {
+    border: none;
+    text-shadow: 1px 1px rgba(255,255,255,0.4);
+    color: #333;
+    background-color: rgba(0,0,0,0.1) !important;
+}
+@media(min-width: 768px) {
+    .right-sidebar {
+        max-width: 30%;
+    }
+    .carousel-post-item {
+        width: 50% !important;
+    }
+    #carouselHome .carousel-indicators {
+        justify-content: start;
+        margin-left: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    #carouselHome .carousel-caption {
+        top: 0;
+        left: 0;
+        right: inherit;
+        padding-left: 1rem;
+    }
+    .menu-header #main-menu > li:not(:last-child) > a {
+        border-right: 1px solid rgb(0 0 0 / 68%);
+    }
+    .menu-header #main-menu > li:not(:first-child) > a {
+        border-left: 1px solid rgb(255 255 255 / 8%);
+    }
+}
+
+@media(min-width: 1000px) {
+    .part-carousel-home .carousel-post-item {
+        width: 33.33% !important;
+    }
+}
+
+@media(max-width: 768px) {
+    #page {
+        padding: 1rem;
+    }
+    #carouselHome .carousel-indicators {
+        margin-bottom: 0.1rem;
+    }
+}
+
