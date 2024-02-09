@@ -23,6 +23,7 @@ class Posts_Berita_9_Widget extends WP_Widget
         $title      = !empty($instance['title']) ? $instance['title'] : '';
         $style      = isset($instance['style']) ? $instance['style'] : 'style1';
         $urutkan    = isset($instance['urutkan']) ? $instance['urutkan'] : 'recent';
+        $kategori   = isset($instance['kategori']) ? $instance['kategori'] : '';
         $jumlah     = isset($instance['jumlah']) ? $instance['jumlah'] : '5';
 ?>
         <p>
@@ -37,6 +38,24 @@ class Posts_Berita_9_Widget extends WP_Widget
                 <option value="3" <?php selected($style, '3'); ?>><?php _e('Style 3'); ?></option>
                 <option value="4" <?php selected($style, '4'); ?>><?php _e('Style 4'); ?></option>
                 <option value="5" <?php selected($style, '5'); ?>><?php _e('Style 5'); ?></option>
+            </select>
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('kategori'); ?>"><?php _e('Kategori:'); ?></label>
+            <select class="widefat" id="<?php echo $this->get_field_id('kategori'); ?>" name="<?php echo $this->get_field_name('kategori'); ?>">
+                <option value="">Pilih Kategori</option>
+                <?php
+                $args = array(
+                    'taxonomy' => 'category',
+                    'orderby' => 'name',
+                    'order' => 'ASC',
+                );
+                $categories = get_categories($args);
+                foreach ($categories as $category) {
+                    $idcat  = $category->term_id;
+                    // $cat_options[$category->slug] = $category->name;
+                    echo '<option value="' . $category->term_id . '" ' . selected($idcat, $kategori) . '>' . $category->name . '</option>';
+                }; ?>
             </select>
         </p>
         <p>
@@ -59,6 +78,7 @@ class Posts_Berita_9_Widget extends WP_Widget
         $instance['title'] = (!empty($new_instance['title'])) ? sanitize_text_field($new_instance['title']) : '';
         $instance['style'] = (!empty($new_instance['style'])) ? sanitize_text_field($new_instance['style']) : 'style1';
         $instance['urutkan'] = (!empty($new_instance['urutkan'])) ? sanitize_text_field($new_instance['urutkan']) : 'recent';
+        $instance['kategori'] = (!empty($new_instance['kategori'])) ? sanitize_text_field($new_instance['kategori']) : '';
         $instance['jumlah'] = (!empty($new_instance['jumlah'])) ? sanitize_text_field($new_instance['jumlah']) : '5';
 
         return $instance;
@@ -68,6 +88,7 @@ class Posts_Berita_9_Widget extends WP_Widget
         $title      = apply_filters('widget_title', $instance['title']);
         $style      = isset($instance['style']) ? $instance['style'] : 'style1';
         $urutkan    = isset($instance['urutkan']) ? $instance['urutkan'] : 'recent';
+        $kategori   = isset($instance['kategori']) ? $instance['kategori'] : '';
         $jumlah     = isset($instance['jumlah']) ? $instance['jumlah'] : '5';
 
         echo $args['before_widget'];
@@ -80,7 +101,13 @@ class Posts_Berita_9_Widget extends WP_Widget
             'post_type' => 'post',
             'posts_per_page' => $jumlah,
         );
-
+        if (!empty($kategori)) {
+            $args_post['tax_query'][] = [
+                'taxonomy'  => 'category',
+                'field' => 'term_id',
+                'terms'     =>  $kategori
+            ];
+        }
         if ($urutkan == 'popular') {
             $args_post['orderby'] = 'meta_value_num';
             $args_post['meta_key'] = 'hit';
