@@ -129,7 +129,7 @@ $format     = get_post_format() ?: 'standard';
                                 <div class="mostview-post-loop">
                                     <?php
 
-                                    $categories = wp_get_post_categories($post_id);
+                                    $categories = wp_get_post_categories(get_the_ID());
 
                                     $category_ids = array();
                                     foreach ($categories as $category) {
