@@ -1,9 +1,16 @@
 <div class="container first-head-part bg-gradients">
     <div class="row m-0 align-items-center">
-        <div class="col-md-9 p-0 d-md-flex d-none align-items-center">
-            <nav id="main-nav" class="navbar navbar-expand-md d-block navbar-light shadow-sm p-0" aria-labelledby="main-nav-label">
+        <div class="col-9 p-0 d-flex align-items-center justify-content-md-between">
+            <nav id="main-nav" class="navbar navbar-expand-md d-block navbar-light p-0" aria-labelledby="main-nav-label">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarsecondarymenu" aria-controls="navbarsecondarymenu" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation', 'justg'); ?>">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="secondary-menu position-relative">
-                    <div class="" tabindex="-1" id="navbarsecondarymenu">
+                    <div class="offcanvas offcanvas-start bg-white" tabindex="-1" id="navbarsecondarymenu">
+
+                        <div class="offcanvas-header justify-content-end">
+                            <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div><!-- .offcancas-header -->
                         <!-- The WordPress Menu goes here -->
                         <?php
                         wp_nav_menu(
@@ -23,7 +30,7 @@
                 </div>
             </nav>
 
-            <div class="datenow text-end d-none d-md-block">
+            <div class="datenow text-end text-md-start">
                 <small class="text-danger fw-bold px-2 py-1 d-inline-block position-relative">
                     <?php echo date('l jS F Y', current_time('timestamp', 0)); ?>
                 </small>
