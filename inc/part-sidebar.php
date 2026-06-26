@@ -5,7 +5,7 @@ $post2_title    = velocitytheme_option('title_posts_sidebar_2', 'Recent Posts');
 $post2_cat      = velocitytheme_option('cat_posts_sidebar_2');
 $post2_sort     = velocitytheme_option('sortby_posts_sidebar_2');
 ?>
-<aside id="iklan-sidebar" class="widget widget_berita_iklan">
+<aside id="media-sidebar" class="widget widget_berita_media">
     <?php get_berita_iklan('iklan_sidebar'); ?>
 </aside>
 
@@ -25,7 +25,7 @@ $post2_sort     = velocitytheme_option('sortby_posts_sidebar_2');
     </aside>
 <?php endif; ?>
 
-<aside id="iklan-sidebar2" class="widget widget_berita_iklan">
+<aside id="media-sidebar2" class="widget widget_berita_media">
     <?php get_berita_iklan('iklan_sidebar_2'); ?>
 </aside>
 
@@ -72,8 +72,8 @@ $post2_sort     = velocitytheme_option('sortby_posts_sidebar_2');
                 array(
                     'post_type'         => 'post',
                     'posts_per_page'    => 3,
-                    'meta_key'          => 'hit',
-                    'orderby'           => 'meta_value_num',
+                    'orderby'           => 'comment_count',
+                    'order'             => 'DESC',
                 )
             );
             // The Loop
@@ -84,9 +84,7 @@ $post2_sort     = velocitytheme_option('sortby_posts_sidebar_2');
                     echo '<div class="tabpopular-post-item bg-light border p-2 mb-1">';
                     echo '<div class="row">';
                     echo '<div class="col-3 pe-0">';
-                    if (has_post_thumbnail()) {
-                        echo '<img class="border border-3" src="' . wp_get_attachment_thumb_url(get_post_thumbnail_id()) . '" loading="lazy"/>';
-                    }
+                    echo vdberita_post_thumbnail(array('size' => 'thumbnail', 'ratio' => 'ratio-1x1', 'wrapper_class' => 'bg-light border border-3 overflow-hidden'));
                     echo '</div>';
                     echo '<div class="col">';
                     echo '<a class="fw-bold" href="' . get_the_permalink() . '">' . get_the_title() . '</a>';

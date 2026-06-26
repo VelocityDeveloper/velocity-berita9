@@ -41,8 +41,8 @@ $container = velocitytheme_option('justg_container_type', 'container');
                         <h3 class="home-title d-flex align-items-center justify-content-between">
                             <span><?php echo $post1_title; ?></span>
                             <?php if ($post1_cat && $post1_cat !== 'disable') : ?>
-                                <a class="btn btn-warning btn-sm shadow py-0 px-1" href="<?php echo get_tag_link($post1_cat); ?>">
-                                    <i class="fa fa-rss"></i>
+                                <a class="btn btn-warning btn-sm shadow lh-sm" href="<?php echo esc_url(get_category_link($post1_cat)); ?>">
+                                    <?php echo vdberita_get_icon('rss'); ?>
                                 </a>
                             <?php endif; ?>
                         </h3>
@@ -81,8 +81,8 @@ $container = velocitytheme_option('justg_container_type', 'container');
                         <h3 class="home-title d-flex align-items-center justify-content-between">
                             <span><?php echo $post2_title; ?></span>
                             <?php if ($post2_cat && $post2_cat !== 'disable') : ?>
-                                <a class="btn btn-warning btn-sm shadow py-0 px-1" href="<?php echo get_tag_link($post2_cat); ?>">
-                                    <i class="fa fa-rss"></i>
+                                <a class="btn btn-warning btn-sm shadow lh-sm" href="<?php echo esc_url(get_category_link($post2_cat)); ?>">
+                                    <?php echo vdberita_get_icon('rss'); ?>
                                 </a>
                             <?php endif; ?>
                         </h3>
@@ -112,8 +112,8 @@ $container = velocitytheme_option('justg_container_type', 'container');
                                     <h3 class="home-special-title m-0 p-0 d-flex align-items-center justify-content-between">
                                         <span class="bg-lightening"><?php echo $post3_title; ?></span>
                                         <?php if ($post3_cat && $post3_cat !== 'disable') : ?>
-                                            <a class="btn btn-warning btn-sm shadow py-0 px-1" href="<?php echo get_tag_link($post3_cat); ?>">
-                                                <i class="fa fa-rss"></i>
+                                            <a class="btn btn-warning btn-sm shadow lh-sm" href="<?php echo esc_url(get_category_link($post3_cat)); ?>">
+                                                <?php echo vdberita_get_icon('rss'); ?>
                                             </a>
                                         <?php endif; ?>
                                     </h3>
@@ -150,8 +150,8 @@ $container = velocitytheme_option('justg_container_type', 'container');
                                     <h3 class="home-title d-flex align-items-center justify-content-between">
                                         <span><?php echo $post6_title; ?></span>
                                         <?php if ($post6_cat && $post6_cat !== 'disable') : ?>
-                                            <a class="btn btn-warning btn-sm shadow py-0 px-1" href="<?php echo get_tag_link($post6_cat); ?>">
-                                                <i class="fa fa-rss"></i>
+                                            <a class="btn btn-warning btn-sm shadow lh-sm" href="<?php echo esc_url(get_category_link($post6_cat)); ?>">
+                                                <?php echo vdberita_get_icon('rss'); ?>
                                             </a>
                                         <?php endif; ?>
                                     </h3>
@@ -180,8 +180,8 @@ $container = velocitytheme_option('justg_container_type', 'container');
                                     <h3 class="home-title d-flex m-0 align-items-center justify-content-between">
                                         <span><?php echo $post4_title; ?></span>
                                         <?php if ($post4_cat && $post4_cat !== 'disable') : ?>
-                                            <a class="btn btn-warning btn-sm shadow py-0 px-1" href="<?php echo get_tag_link($post4_cat); ?>">
-                                                <i class="fa fa-rss"></i>
+                                            <a class="btn btn-warning btn-sm shadow lh-sm" href="<?php echo esc_url(get_category_link($post4_cat)); ?>">
+                                                <?php echo vdberita_get_icon('rss'); ?>
                                             </a>
                                         <?php endif; ?>
                                     </h3>
@@ -218,8 +218,8 @@ $container = velocitytheme_option('justg_container_type', 'container');
                                     <h3 class="home-title d-flex align-items-center justify-content-between">
                                         <span><?php echo $post5_title; ?></span>
                                         <?php if ($post5_cat && $post5_cat !== 'disable') : ?>
-                                            <a class="btn btn-warning btn-sm shadow py-0 px-1" href="<?php echo get_tag_link($post5_cat); ?>">
-                                                <i class="fa fa-rss"></i>
+                                            <a class="btn btn-warning btn-sm shadow lh-sm" href="<?php echo esc_url(get_category_link($post5_cat)); ?>">
+                                                <?php echo vdberita_get_icon('rss'); ?>
                                             </a>
                                         <?php endif; ?>
                                     </h3>

@@ -12,6 +12,7 @@ defined('ABSPATH') || exit;
 get_header();
 $container  = velocitytheme_option('justg_container_type', 'container');
 $full_url   = get_the_post_thumbnail_url(get_the_ID(), 'full');
+$thumb_id   = get_post_thumbnail_id(get_the_ID());
 $format     = get_post_format() ?: 'standard';
 ?>
 
@@ -67,7 +68,13 @@ $format     = get_post_format() ?: 'standard';
 
                         <?php
                         if ($full_url && $format !== 'video') {
-                            echo '<img class="img-fluid w-100 mb-2" src="' . $full_url . '" loading="lazy">';
+                            $caption = $thumb_id ? wp_get_attachment_caption($thumb_id) : '';
+                            echo '<figure class="post-thumbnail mb-2">';
+                            echo '<img class="img-fluid w-100" src="' . esc_url($full_url) . '" alt="' . esc_attr(get_the_title()) . '" loading="lazy">';
+                            if ($caption) {
+                                echo '<figcaption class="wp-caption-text text-muted small mt-1">' . esc_html($caption) . '</figcaption>';
+                            }
+                            echo '</figure>';
                         }
                         ?>
 
@@ -125,7 +132,7 @@ $format     = get_post_format() ?: 'standard';
                     <div class="mostview-post">
                         <div class="row">
                             <div class="col-md-6 col-xl-7">
-                                <h6 class="mb-3">MOST VIEW ARTICLE</h6>
+                                <h6 class="mb-3">POPULAR ARTICLE</h6>
                                 <div class="mostview-post-loop">
                                     <?php
 
@@ -159,7 +166,7 @@ $format     = get_post_format() ?: 'standard';
                                 $datalink  = velocitytheme_option('link_sosmed_' . $key);
                                 if ($datalink) {
                                     echo '<div class="col-3 pb-2">';
-                                    echo '<a class="btn border-0 shadow-sm rounded-0 w-100 btn-secondary" style="--bs-btn-bg:' . $color . '" href="' . $datalink . '" target="_blank"><i class="fa fa-' . $key . '"></i></a>';
+                                    echo '<a class="btn border-0 shadow-sm rounded-0 w-100 btn-secondary" style="--bs-btn-bg:' . esc_attr($color) . '" href="' . esc_url($datalink) . '" target="_blank" rel="noopener noreferrer">' . vdberita_get_icon($key, 'bi', ucfirst($key)) . '</a>';
                                     echo '</div>';
                                 }
                             }

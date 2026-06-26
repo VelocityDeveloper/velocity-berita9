@@ -7,8 +7,9 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-class Posts_Berita_9_Widget extends WP_Widget
-{
+if (!class_exists('Posts_Berita_9_Widget')) {
+    class Posts_Berita_9_Widget extends WP_Widget
+    {
     function __construct()
     {
         parent::__construct(
@@ -109,20 +110,21 @@ class Posts_Berita_9_Widget extends WP_Widget
             ];
         }
         if ($urutkan == 'popular') {
-            $args_post['orderby'] = 'meta_value_num';
-            $args_post['meta_key'] = 'hit';
+            $args_post['orderby'] = 'comment_count';
+            $args_post['order'] = 'DESC';
         }
-
-        $posts = new WP_Query($args_post);
 
         module_vdposts($args_post, 'posts' . $style);
 
         echo $args['after_widget'];
     }
 }
+}
 
-function register_posts_berita_9_widget()
-{
-    register_widget('Posts_Berita_9_Widget');
+if (!function_exists('register_posts_berita_9_widget')) {
+    function register_posts_berita_9_widget()
+    {
+        register_widget('Posts_Berita_9_Widget');
+    }
 }
 add_action('widgets_init', 'register_posts_berita_9_widget');

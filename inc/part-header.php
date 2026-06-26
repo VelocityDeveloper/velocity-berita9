@@ -1,6 +1,7 @@
-<div class="container first-head-part bg-gradients">
+<div class="container first-head-part bg-light border-bottom">
     <div class="row m-0 align-items-center">
-        <div class="col-9 p-0 d-flex align-items-center justify-content-md-between">
+        <div class="col-9 p-0">
+        <div class="d-flex align-items-center justify-content-md-between">
             <nav id="main-nav" class="navbar navbar-expand-md d-block navbar-light p-0" aria-labelledby="main-nav-label">
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarsecondarymenu" aria-controls="navbarsecondarymenu" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation', 'justg'); ?>">
                     <span class="navbar-toggler-icon"></span>
@@ -9,7 +10,7 @@
                     <div class="offcanvas offcanvas-start bg-white" tabindex="-1" id="navbarsecondarymenu">
 
                         <div class="offcanvas-header justify-content-end">
-                            <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div><!-- .offcancas-header -->
                         <!-- The WordPress Menu goes here -->
                         <?php
@@ -36,12 +37,13 @@
                 </small>
             </div>
         </div>
-        <div class="col-md-3 p-0">
-            <div class="search-header float-end">
+        </div>
+        <div class="col-3 p-0">
+            <div class="search-header float-end my-2">
                 <form action="" method="get" id="search" class="d-flex overflow-hidden">
                     <input type="text" name="s" placeholder="Search" class="form-control-sm bg-transparent border-0 rounded-0">
                     <button type="submit" class="btn btn-link text-secondary py-1 px-2">
-                        <i class="fa fa-search"></i>
+                        <?php echo vdberita_get_icon('search', 'bi'); ?>
                     </button>
                 </form>
             </div>
@@ -90,7 +92,7 @@
                             'theme_location'  => 'primary',
                             'container_class' => 'offcanvas-body',
                             'container_id'    => '',
-                            'menu_class'      => 'navbar-nav justify-content-start flex-grow-1 pe-3',
+                            'menu_class'      => 'navbar-nav justify-content-start flex-grow-1 pe-3 flex-wrap',
                             'fallback_cb'     => '',
                             'menu_id'         => 'main-menu',
                             'depth'           => 4,

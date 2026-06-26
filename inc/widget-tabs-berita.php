@@ -7,8 +7,9 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-class Tabs_Berita_9_Widget extends WP_Widget
-{
+if (!class_exists('Tabs_Berita_9_Widget')) {
+    class Tabs_Berita_9_Widget extends WP_Widget
+    {
     function __construct()
     {
         parent::__construct(
@@ -74,8 +75,8 @@ class Tabs_Berita_9_Widget extends WP_Widget
                     array(
                         'post_type'         => 'post',
                         'posts_per_page'    => 3,
-                        'meta_key'          => 'hit',
-                        'orderby'           => 'meta_value_num',
+                        'orderby'           => 'comment_count',
+                        'order'             => 'DESC',
                     )
                 );
                 // The Loop
@@ -86,9 +87,7 @@ class Tabs_Berita_9_Widget extends WP_Widget
                         echo '<div class="tabpopular-post-item bg-light border p-2 mb-1">';
                         echo '<div class="row">';
                         echo '<div class="col-3 pe-0">';
-                        if (has_post_thumbnail()) {
-                            echo '<img class="border border-3" src="' . wp_get_attachment_thumb_url(get_post_thumbnail_id()) . '" loading="lazy"/>';
-                        }
+                        echo vdberita_post_thumbnail(array('size' => 'thumbnail', 'ratio' => 'ratio-1x1', 'wrapper_class' => 'bg-light border border-3 overflow-hidden'));
                         echo '</div>';
                         echo '<div class="col">';
                         echo '<a class="fw-bold" href="' . get_the_permalink() . '">' . get_the_title() . '</a>';
@@ -164,9 +163,12 @@ class Tabs_Berita_9_Widget extends WP_Widget
         echo $args['after_widget'];
     }
 }
+}
 
-function register_tabs_berita_9_widget()
-{
-    register_widget('Tabs_Berita_9_Widget');
+if (!function_exists('register_tabs_berita_9_widget')) {
+    function register_tabs_berita_9_widget()
+    {
+        register_widget('Tabs_Berita_9_Widget');
+    }
 }
 add_action('widgets_init', 'register_tabs_berita_9_widget');

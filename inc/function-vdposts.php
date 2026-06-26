@@ -1,11 +1,16 @@
 <?php
-function module_vdposts($args = null, $style = null)
-{
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+if (!function_exists('module_vdposts')) {
+    function module_vdposts($args = null, $style = null)
+    {
 
     if (isset($args['sortby'])) {
-        if ($args['sortby'] == 'view') {
-            $args['orderby']    = 'meta_value_num';
-            $args['meta_key']   = 'hit';
+        if ($args['sortby'] === 'popular') {
+            $args['orderby'] = 'comment_count';
+            $args['order']   = 'DESC';
         }
         unset($args['sortby']);
     }
@@ -23,13 +28,7 @@ function module_vdposts($args = null, $style = null)
                 case 'posts1':
 ?>
                     <div class="posts-item pb-1 mb-2">
-                        <div class="ratio ratio-16x9 bg-light border border-4 mb-2">
-                            <?php if (has_post_thumbnail()) : ?>
-                                <a href="<?php echo get_the_permalink(); ?>">
-                                    <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id(), 'medium'); ?>" alt="" loading="lazy">
-                                </a>
-                            <?php endif; ?>
-                        </div>
+                        <?php echo vdberita_post_thumbnail(array('size' => 'medium', 'ratio' => 'ratio-16x9', 'wrapper_class' => 'bg-light border border-4 mb-2 overflow-hidden')); ?>
                         <div class="post-text">
                             <h6><a class="fw-bold mb-2 d-block" href="<?php echo get_the_permalink(); ?>">
                                     <?php echo get_the_title(); ?>
@@ -40,7 +39,7 @@ function module_vdposts($args = null, $style = null)
                                 </small>
                             </div>
                             <div class="py-1 px-2 border-bottom border-top text-muted bg-light">
-                                <small> <?php echo get_the_date(); ?> / <?php echo justg_get_hit(); ?> views </small>
+                                <small> <?php echo get_the_date(); ?> </small>
                             </div>
                         </div>
                     </div>
@@ -52,17 +51,11 @@ function module_vdposts($args = null, $style = null)
                     <div class="posts-item border-bottom pb-1 mb-2">
                         <div class="row">
                             <div class="col-4 col-md-3">
-                                <div class="ratio ratio-1x1 bg-light border border-4">
-                                    <?php if (has_post_thumbnail()) : ?>
-                                        <a href="<?php echo get_the_permalink(); ?>">
-                                            <img src="<?php echo wp_get_attachment_thumb_url(get_post_thumbnail_id()); ?>" alt="" loading="lazy">
-                                        </a>
-                                    <?php endif; ?>
-                                </div>
+                                <?php echo vdberita_post_thumbnail(array('size' => 'thumbnail', 'ratio' => 'ratio-1x1', 'wrapper_class' => 'bg-light border border-4 overflow-hidden')); ?>
                             </div>
                             <div class="col-8 col-md-9 ps-0">
                                 <div class="post-date">
-                                    <small> <?php echo get_the_date(); ?> / <?php echo justg_get_hit(); ?> views </small>
+                                    <small> <?php echo get_the_date(); ?> </small>
                                 </div>
                                 <h6>
                                     <a class="fw-bold" href="<?php echo get_the_permalink(); ?>" title="<?php echo get_the_title(); ?>">
@@ -80,13 +73,7 @@ function module_vdposts($args = null, $style = null)
                         <div class="shadow-sm bg-light">
                             <div class="row m-0">
                                 <div class="col-4 px-1">
-                                    <div class="ratio ratio-1x1 bg-light">
-                                        <?php if (has_post_thumbnail()) : ?>
-                                            <a href="<?php echo get_the_permalink(); ?>">
-                                                <img data-flickity-lazyload="<?php echo wp_get_attachment_thumb_url(get_post_thumbnail_id()); ?>" alt="" loading="lazy">
-                                            </a>
-                                        <?php endif; ?>
-                                    </div>
+                                    <?php echo vdberita_post_thumbnail(array('size' => 'thumbnail', 'ratio' => 'ratio-1x1', 'wrapper_class' => 'bg-light overflow-hidden', 'flickity_lazy' => true)); ?>
                                 </div>
                                 <div class="col px-1">
                                     <div class="post-date">
@@ -108,17 +95,11 @@ function module_vdposts($args = null, $style = null)
                     <div class="posts-item border-bottom pb-1 mb-2">
                         <div class="row">
                             <div class="col-4">
-                                <div class="ratio ratio-1x1 bg-light border border-4">
-                                    <?php if (has_post_thumbnail()) : ?>
-                                        <a href="<?php echo get_the_permalink(); ?>">
-                                            <img src="<?php echo wp_get_attachment_thumb_url(get_post_thumbnail_id()); ?>" alt="" loading="lazy">
-                                        </a>
-                                    <?php endif; ?>
-                                </div>
+                                <?php echo vdberita_post_thumbnail(array('size' => 'thumbnail', 'ratio' => 'ratio-1x1', 'wrapper_class' => 'bg-light border border-4 overflow-hidden')); ?>
                             </div>
                             <div class="col-8 ps-0">
                                 <div class="post-date">
-                                    <small> <?php echo get_the_date(); ?> / <?php echo justg_get_hit(); ?> views </small>
+                                    <small> <?php echo get_the_date(); ?> </small>
                                 </div>
                                 <h6>
                                     <a class="fw-bold" href="<?php echo get_the_permalink(); ?>" title="<?php echo get_the_title(); ?>">
@@ -137,7 +118,7 @@ function module_vdposts($args = null, $style = null)
                     break;
                 case 'posts4':
                     echo '<a class="d-flex w-100 border-bottom pb-1 mb-1" href="' . get_the_permalink() . '">';
-                    echo '<i class="fa fa-file-text-o mt-1 me-2"></i>';
+                    echo vdberita_get_icon('file-text', 'bi mt-1 me-2 flex-shrink-0');
                     echo '<span>' . get_the_title() . '</span>';
                     echo '</a>';
                 ?>
@@ -147,7 +128,7 @@ function module_vdposts($args = null, $style = null)
                 ?>
                     <div class="posts-item border-bottom pb-1 mb-2">
                         <div class="post-date">
-                            <small> <?php echo get_the_date(); ?> / <?php echo justg_get_hit(); ?> views </small>
+                            <small> <?php echo get_the_date(); ?> </small>
                         </div>
                         <h6>
                             <a class="fw-bold" href="<?php echo get_the_permalink(); ?>" title="<?php echo get_the_title(); ?>">
@@ -160,16 +141,10 @@ function module_vdposts($args = null, $style = null)
                 case 'homespecial':
                 ?>
                     <div class="posts-item home-special p-2 shadow mb-2 position-relative">
-                        <div class="ratio ratio-16x9 bg-light mb-2">
-                            <?php if (has_post_thumbnail()) : ?>
-                                <a class="text-white" href="<?php echo get_the_permalink(); ?>">
-                                    <img src="<?php echo wp_get_attachment_thumb_url(get_post_thumbnail_id()); ?>" alt="" loading="lazy">
-                                </a>
-                            <?php endif; ?>
-                        </div>
+                        <?php echo vdberita_post_thumbnail(array('size' => 'medium', 'ratio' => 'ratio-16x9', 'wrapper_class' => 'bg-light mb-2 overflow-hidden', 'link_class' => 'd-block text-white')); ?>
                         <div class="post-text text-white">
                             <div class="py-2 px-1 text-white">
-                                <small> <?php echo get_the_date(); ?> / <?php echo justg_get_hit(); ?> views </small>
+                                <small> <?php echo get_the_date(); ?> </small>
                             </div>
                             <h6>
                                 <a class="fw-bold text-white d-block h6" href="<?php echo get_the_permalink(); ?>">
@@ -196,4 +171,5 @@ function module_vdposts($args = null, $style = null)
     }
     /* Restore original Post Data */
     wp_reset_postdata();
+    }
 }
